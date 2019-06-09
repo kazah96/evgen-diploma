@@ -5,15 +5,20 @@ import { connect } from 'react-redux';
 import Dictionary from '../../blocks/dictionary'
 import { dictionariesPage } from '../../consts/routes';
 
+import style from './style.module.css'
+
 class Dictionaries extends Component {
   render() {
 
     return (
       <>
-        <nav>
+        <nav className={style.header}>
           {Object.keys(this.props.dictionaries).map(dictKey => {
 
-            return (<Link to={`${dictionariesPage}/${dictKey}`}>{this.props.dictionaries[dictKey].showName}</Link>)
+            return (
+              <Link key={dictKey} to={`${dictionariesPage}/${dictKey}`}>
+                {this.props.dictionaries[dictKey].showName}
+              </Link>)
           })}
         </nav>
         <Switch>

@@ -1,3 +1,22 @@
 .header { 
-  background: red;
+  background:  #6c7ae0;
+  display: flex;
+}
+
+.link {
+  font-size: 22px;
+  color: #d8d8d8;
+  line-height: 1.2;
+  font-weight: 500;
+  padding-top: 19px;
+  padding-bottom: 19px;
+  text-decoration: none;
+  display: block;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.activeLink {
+  color: #ffffff;
+  border-bottom: 3px solid #FFCD4C;
 }

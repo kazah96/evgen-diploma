@@ -1,0 +1,7 @@
+.table {
+  background: red;
+}
+
+.table > tr {
+  border-bottom: 1px solid #f2f2f2;
+}

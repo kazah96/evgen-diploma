@@ -1,0 +1,9 @@
+.header {
+  background: #8993DE;
+  padding: 14px 12px 14px 20px;
+  color: white;
+}
+
+.header > a {
+  color: white;
+}

@@ -7,6 +7,7 @@ const INIT_STATE = {
     items: [
       {
         name: 'Tovar 1',
+        shortName: 'tvr 2',
       }
     ]
   },
