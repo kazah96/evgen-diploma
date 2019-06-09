@@ -4,6 +4,20 @@ import * as actions from './actions';
 const INIT_STATE = {
   goods: {
     showName: 'Товары',
+    schema: [
+      {
+        name: 'id',
+        type: 'number'
+      },
+      {
+        name: 'name',
+        type: 'string'
+      },
+      {
+        name: 'shortName',
+        type: 'string'
+      },
+    ],
     items: [
       {
         id: 23,
@@ -33,6 +47,12 @@ const INIT_STATE = {
     ]
   },
   persons: {
+    schema: [
+      {
+        name: 'name',
+        type: 'string'
+      }
+    ],
     showName: 'Персоны',
     items: [
       {
