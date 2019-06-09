@@ -4,7 +4,7 @@ import DictionariesBlock from '../../blocks/dictionaries';
 export default class Dictionaries extends Component {
   render() {
     return (
-      <DictionariesBlock />
+      <DictionariesBlock match={this.props.match} />
     )
   }
 }

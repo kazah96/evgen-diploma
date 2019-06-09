@@ -22,36 +22,43 @@ class Dictionary extends Component {
   }
 
   get table() {
-    const { match: { params } } = this.props;
+    const { match: { params }, dictionaries } = this.props;
 
-    const items = this.props.dictionaries[params.name].items;
+    const items = dictionaries[params.name].items;
 
     if (items.length <= 0) return this.noItems;
 
     return (
-      <table className={style.table}>
-        <thead>
-          <tr>
-            {this.getColumns(items[0]).map(column => (
-              <th key={column}>
-                {column}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {items.map((row, id) => {
-            return (
-              <tr key={id}>
-                {this.getColumns(row).map(column => (
-                  <td key={column}>
-                    {row[column]}
-                  </td>))
-                }
-              </tr>)
-          })}
-        </tbody>
-      </table>)
+      <div>
+
+        <table className={style.table}>
+          <thead>
+            <tr className={style.header}>
+              {this.getColumns(items[0]).map(column => (
+                <th key={column}>
+                  {column}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {items.map((row, id) => {
+              return (
+                <tr key={`${id}${Math.random()}`}>
+                  {this.getColumns(row).map(column => (
+                    <td key={column}>
+                      <input className={style.input} defaultValue={row[column]} />
+                    </td>))
+                  }
+                </tr>)
+            })}
+          </tbody>
+        </table>
+        <div>
+          Add
+        </div>
+      </div>
+    )
   }
 
   render() {

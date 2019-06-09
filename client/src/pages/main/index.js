@@ -15,7 +15,8 @@ export default class Main extends React.PureComponent {
         <Header />
         <Switch>
           {/* <PrivateRoute path={mainPage} component={Main} /> */}
-          <Route path={dictionariesPage} component={Dictionaries} />
+          <Route path={`${dictionariesPage}/:name`} component={Dictionaries} />
+          <Route path={`${dictionariesPage}`} component={Dictionaries} />
           <Route path={buyPage} component={BuyPage} />
         </Switch>
       </>
