@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import { history } from '../../store';
 
@@ -19,9 +18,6 @@ class PrivateRoute extends Component {
 
 
   componentDidMount() {
-    const g = this.context;
-const f = this.props;
-debugger;
     const user = window.localStorage.getItem('user');
 
     if(!user) {

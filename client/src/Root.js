@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import {Route, Switch, Router} from 'react-router-dom';
+import { Route, Switch, Router, Redirect } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router'
 
 import LoginPage from './pages/login-page';
@@ -15,13 +15,19 @@ class Root extends Component {
   render() {
     return (
       <Provider store={store}>
-          <ConnectedRouter history={history}>
-            <Switch>
-              <PrivateRoute path={mainPage} component={Main} />
-              <Route component={NotFound} />
-              <Route path={loginPage} component={LoginPage} />
-            </Switch>
-          </ConnectedRouter>
+        <ConnectedRouter history={history}>
+          <Switch>
+            {/* <PrivateRoute path={mainPage} component={Main} /> */}
+            <Route path={mainPage} component={Main} />
+            <Route path={loginPage} component={LoginPage} />
+            <Route
+              exact={true} path={'/'} render={() => ( //eslint-disable-line react/jsx-no-bind
+                <Redirect to={mainPage} />
+              )}
+            />
+            <Route component={NotFound} />
+          </Switch>
+        </ConnectedRouter>
       </Provider>
     )
   }
