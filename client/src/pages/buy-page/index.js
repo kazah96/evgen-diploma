@@ -13,13 +13,21 @@ export default class BuyPage extends Component {
   render() {
     return (
       <div className={style.content}>
-        <BuyForm/>
-        <BuyList>
+        <BuyForm />
+        <div className={style.buyList}>
 
-        </BuyList>
+          <div className={style.label}>
+            Список продаж
 
-        Список продаж
-        
+        </div>
+
+          <BuyList>
+
+          </BuyList>
+
+        </div>
+
+
       </div>
     )
   }

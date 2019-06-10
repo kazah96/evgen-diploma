@@ -9,6 +9,7 @@ class BuyForm extends Component {
 
   state = {
     client: '',
+    sum: '0',
     bank: '',
     app: '',
     errors: []
@@ -19,7 +20,7 @@ class BuyForm extends Component {
   }
 
   onSubmit = () => {
-    const { app, bank, client } = this.state;
+    const { app, bank, client, sum } = this.state;
     const { user } = this.props;
     const date = '10-06-19';
     const errors = [];
@@ -29,6 +30,10 @@ class BuyForm extends Component {
     }
 
     if (app === '') {
+      errors.push('app');
+    }
+
+    if (sum === '') {
       errors.push('app');
     }
 
@@ -90,6 +95,11 @@ class BuyForm extends Component {
         <div>
           <label className={style.label}>Покупатель</label>
           <input name="client" value={this.state.client} onChange={this.onChange}>
+          </input>
+        </div>
+        <div>
+          <label className={style.label}>Сумма</label>
+          <input type="number" name="sum" value={this.state.sum} onChange={this.onChange}>
           </input>
         </div>
         <div>
