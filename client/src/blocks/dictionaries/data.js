@@ -57,7 +57,7 @@ export default {
         showName: 'Краткое название',
         type: 'string',
       },
-    
+
     ],
     items: [
       {
@@ -70,7 +70,7 @@ export default {
         name: 'Коммерческий директор',
         s_name: 'Ком.директор',
       },
-   
+
     ]
   },
   measurements: {
@@ -90,7 +90,7 @@ export default {
         showName: 'Краткое название',
         type: 'string',
       },
-    
+
     ],
     items: [
       {
@@ -103,7 +103,7 @@ export default {
         name: 'Часы',
         s_name: 'ч',
       },
-   
+
     ]
   },
   apps: {
@@ -141,46 +141,47 @@ export default {
         name: 'Двухкомнатная',
         area: 43.5,
         measure_type: 2,
-        address: 'Терешковой 111', 
+        address: 'Терешковой 111',
       },
       {
         id: 2,
         name: 'Однокомнатная',
         area: 434.5,
         measure_type: 2,
-        address: 'Брестская 23', 
+        address: 'Брестская 23',
       },
       {
         id: 3,
         name: 'Однокомнатная',
         area: 13.5,
         measure_type: 2,
-        address: 'Родимцева 92', 
+        address: 'Родимцева 92',
       },
       {
         id: 4,
         name: 'Место в общежитии',
         area: 423.5,
         measure_type: 2,
-        address: 'Чкалова 3', 
+        address: 'Чкалова 3',
       },
 
-      
+
     ]
   },
-  persons: {
+  services: {
     schema: [
       {
+        name: 'id',
+        type: 'number',
+      },
+      {
         name: 'name',
-        type: 'string'
+        showName: 'Название',
+        type: 'string',
       }
     ],
-    showName: 'Персоны',
+    showName: 'Услуги',
     items: [
-      {
-        name: 'Персона 1',
-        shortName: 'tvr 2',
-      }
     ]
   },
 }
