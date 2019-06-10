@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-
+import get from 'getColumns';
 import style from './style.module.css';
 
 class Dictionary extends Component {
@@ -21,17 +21,17 @@ class Dictionary extends Component {
   }
 
   componentDidMount() {
-   this.fillTable();
+    this.fillTable();
   }
 
   fillTable = () => {
-    const { items, schema  } = this.props;
+    const { items, schema } = this.props;
 
     this.setState({ items, schema });
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.items !== this.props.items || prevProps.schema !== this.props.schema) {
+    if (prevProps.items !== this.props.items || prevProps.schema !== this.props.schema) {
       this.fillTable();
     }
   }
@@ -39,6 +39,25 @@ class Dictionary extends Component {
 
   get dictionaryNames() {
     return Object.keys(this.props.dictionaries);
+  }
+
+  getRowFromSchema = (schema) => {
+    return schema.reduce((acc, cur) => {
+
+      return {
+        ...acc,
+        [cur.name]: '',
+      }
+    }, {})
+  }
+
+  addRow = () => {
+    const items = [...this.state.items];
+
+    const row = this.getRowFromSchema(this.state.schema);
+    items.push(row);
+
+    this.setState({ items });
   }
 
   getColumns = row => {
@@ -57,7 +76,7 @@ class Dictionary extends Component {
     const { items, schema } = this.state;
 
     if (!schema || schema.length <= 0) return this.noItems('No shema provided');
-    if (!items || items.length <= 0) return  this.noItems('No items provided');
+    if (!items || items.length <= 0) return this.noItems('No items provided');
 
     return (
       <div>
@@ -76,15 +95,26 @@ class Dictionary extends Component {
               return (
                 <tr key={`${row.id}${Math.random()}`}>
                   {schema.map(column => (
-                    <td key={column.name}>
-                      <input className={style.input} defaultValue={row[column.name]} />
+                    <td
+                      key={column.name}
+                      name={column.name}
+                      row={row.id}
+                      onChange={this.onCellChange}
+                    >
+                      <input
+                        name={column.name}
+                        row={row.id}
+                        onChange={this.onCellChange}
+                        className={style.input}
+                        defaultValue={row[column.name]}
+                      />
                     </td>))
                   }
                 </tr>)
             })}
           </tbody>
         </table>
-        <div>
+        <div onClick={this.addRow}>
           Add
         </div>
       </div>
