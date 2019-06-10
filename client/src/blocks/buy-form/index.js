@@ -10,7 +10,8 @@ class BuyForm extends Component {
   state = {
     client: '',
     bank: '',
-    app: ''
+    app: '',
+    errors: []
   }
 
   onChange = (e) => {
@@ -20,7 +21,26 @@ class BuyForm extends Component {
   onSubmit = () => {
     const { app, bank, client } = this.state;
     const { user } = this.props;
-    const date = '10.06.19';
+    const date = '10-06-19';
+    const errors = [];
+
+    if (client === '') {
+      errors.push('client');
+    }
+
+    if (app === '') {
+      errors.push('app');
+    }
+
+    if (errors.length > 0) {
+      this.setState({ errors });
+
+      return;
+    }
+
+    if (this.state.errors.length > 0) {
+      this.setState({ errors: [] });
+    }
 
     const buy = {
       id: 12,
@@ -37,6 +57,7 @@ class BuyForm extends Component {
 
   render() {
     const { apps, user, banks } = this.props;
+    const { errors } = this.state;
 
     return (
       <div className={style.form}>
@@ -71,7 +92,10 @@ class BuyForm extends Component {
           <input name="client" value={this.state.client} onChange={this.onChange}>
           </input>
         </div>
-
+        <div>
+          {errors.length > 0 &&
+            <span className={style.errors}>Необходимо заполнить все поля</span>}
+        </div>
         <button onClick={this.onSubmit}>
           Оформить продажу
         </button>
