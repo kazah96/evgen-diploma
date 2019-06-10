@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "connected-react-router": "^6.4.0",
+    "plotly.js": "^1.48.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-plotly.js": "^2.3.0",
     "react-redux": "^7.0.3",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
@@ -14,7 +16,8 @@
     "redux": "^4.0.1",
     "redux-actions-helper": "^1.0.4",
     "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "regression": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -5,10 +5,10 @@ import Table from '../../../components/table';
 
 
 class Price extends Component {
-  get noItems() {
+  noItems(message) {
     return (
       <div>
-        No items
+        {message}
       </div>
     )
   }
@@ -18,7 +18,9 @@ class Price extends Component {
 
     const dict = prices[params.name];
 
-    if (dict.items.length <= 0) return this.noItems;
+    if(!dict || !dict.items) return this.noItems('Dict not found')
+
+    if (dict.items.length <= 0) return this.noItems('No items');
 
     return (
      <Table schema={dict.schema} items={dict.items}>

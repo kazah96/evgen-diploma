@@ -19,10 +19,10 @@
 
 .link:hover {
   transition: color ease 0.3s;
-  color: #555;
+  color: #1b1a1a;
 }
 
 .activeLink {
-  color: #555;
+  color: #1b1a1a;
   border-bottom: 3px solid #ffcd4c;
 }
