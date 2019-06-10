@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Table from '../../../components/table';
 
+import { editItems } from '../actions';
 import style from './style.module.css';
 
 class Dictionary extends Component {
@@ -14,6 +15,12 @@ class Dictionary extends Component {
     )
   }
 
+  saveItems = (items) => {
+    const { match: { params } } = this.props;
+
+    this.props.editItems(params.name, items);
+  }
+
   render() {
     const { match: { params }, dictionaries } = this.props;
 
@@ -22,10 +29,8 @@ class Dictionary extends Component {
     if (dict.items.length <= 0) return this.noItems;
 
     return (
-     <Table schema={dict.schema} items={dict.items}>
-
-
-     </Table>
+      <Table schema={dict.schema} saveItems={this.saveItems} items={dict.items}>
+      </Table>
     )
   }
 
@@ -34,4 +39,4 @@ class Dictionary extends Component {
 
 export default connect((state) => ({
   dictionaries: state.dictionaries,
-}))(Dictionary);
+}), { editItems })(Dictionary);

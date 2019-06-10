@@ -137,11 +137,32 @@ export default {
     ],
     items: [
       {
-        id: 23,
-        name: 'Баываыва',
+        id: 1,
+        name: 'Двухкомнатная',
         area: 43.5,
         measure_type: 2,
-        address: 'Терешковой 23', 
+        address: 'Терешковой 111', 
+      },
+      {
+        id: 2,
+        name: 'Однокомнатная',
+        area: 434.5,
+        measure_type: 2,
+        address: 'Брестская 23', 
+      },
+      {
+        id: 3,
+        name: 'Однокомнатная',
+        area: 13.5,
+        measure_type: 2,
+        address: 'Родимцева 92', 
+      },
+      {
+        id: 4,
+        name: 'Место в общежитии',
+        area: 423.5,
+        measure_type: 2,
+        address: 'Чкалова 3', 
       },
 
       

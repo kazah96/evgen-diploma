@@ -7,18 +7,18 @@ const INIT_STATE = {
 }
 
 export default handleActions({
-  [actions.editItems]: (state, action) => {
-
-    const { name, items }  = action.payload;
-
-    const oldDict = state[name];
+  [actions.addBuy]: (state, action) => {
+    const oldBuyList = state.buylist;
 
     return {
       ...state,
-      [name]: {
-        ...oldDict,
-        items
+      buylist: {
+        ...oldBuyList,
+        items: [
+          ...oldBuyList.items,
+          action.payload
+        ]
       }
     }
-  },
+  }
 }, INIT_STATE)

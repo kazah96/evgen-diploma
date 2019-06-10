@@ -37,11 +37,10 @@
   outline: none;
 }
 
+.addButton {
+  
+} 
 
-.input :focus {
-  outline: none;
-}
+.saveButton {
 
-.input :hover {
-  outline: none;
-}
+} 

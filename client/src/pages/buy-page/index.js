@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
-import BuyList from '../../blocks/buy-list'
+import BuyList from '../../blocks/buy-list';
+import BuyForm from '../../blocks/buy-form';
+
+import style from './style.module.css'
 
 export default class BuyPage extends Component {
   componentDidMount() {
@@ -9,10 +12,11 @@ export default class BuyPage extends Component {
 
   render() {
     return (
-      <div>
-        <button>
-          Оформить продажу
-        </button>
+      <div className={style.content}>
+        <BuyForm/>
+        <BuyList>
+
+        </BuyList>
 
         Список продаж
         

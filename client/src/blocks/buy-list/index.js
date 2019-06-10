@@ -6,6 +6,11 @@ import Table from '../../components/table';
 import { pricePage } from '../../consts/routes';
 
 class BuyList extends Component {
+
+  get noItems() {
+    return null;
+  }
+
   render() {
 
     const { buylist } = this.props;
@@ -14,7 +19,7 @@ class BuyList extends Component {
     if (buylist.items.length <= 0) return this.noItems;
 
     return (
-      <Table schema={buylist.schema} items={buylist.items}>
+      <Table schema={buylist.schema} items={buylist.items} editable={false}>
 
 
       </Table>
@@ -24,5 +29,5 @@ class BuyList extends Component {
 
 
 export default connect((state) => ({
-  buylist: state.buylist,
+  buylist: state.buylist.buylist,
 }))(BuyList);

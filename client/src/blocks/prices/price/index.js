@@ -20,11 +20,10 @@ class Price extends Component {
 
     if(!dict || !dict.items) return this.noItems('Dict not found')
 
-    if (dict.items.length <= 0) return this.noItems('No items');
+    // if (dict.items.length <= 0) return this.noItems('No items');
 
     return (
      <Table schema={dict.schema} items={dict.items}>
-
 
      </Table>
     )

@@ -1,5 +1,4 @@
 import { handleActions } from 'redux-actions-helper';
-import * as actions from './actions';
 
 const INIT_STATE = {
   goods: {
@@ -11,10 +10,12 @@ const INIT_STATE = {
       },
       {
         name: 'name',
+        showName: 'Название',
         type: 'string'
       },
       {
-        name: 'shortName',
+        name: 'price',
+        showName: 'Цена',
         type: 'string'
       },
     ],
@@ -28,7 +29,24 @@ const INIT_STATE = {
   },
   services: {
     name:'services',
-    showName:'services',
+    showName:'Услуги',
+    schema: [
+      {
+        name: 'id',
+        type: 'number'
+      },
+      {
+        name: 'name',
+        showName: 'Название',
+        type: 'string'
+      },
+      {
+        name: 'price',
+        showName: 'Цена',
+        type: 'string'
+      },
+    ],
+    items: [],
   }
 
 }

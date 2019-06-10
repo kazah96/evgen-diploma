@@ -19,8 +19,6 @@ export const getUser = createThunkAction(
   '@@auth/LOGIN', ({ dispatch }, id) => {
     const user = users.find(item => item.id === id);
 
-
-    debugger;
     if (user) {
       dispatch(setUser(user));
     }

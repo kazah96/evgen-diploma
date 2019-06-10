@@ -17,8 +17,6 @@ class Analysis extends Component {
       x.push(point[1]);
     })
 
-
-    debugger;
     return (
       <div>
         <Plot
@@ -31,7 +29,7 @@ class Analysis extends Component {
               marker: { color: 'blue' },
             },
           ]}
-          layout={{ width: 1200, height: 1000, title: 'A Fancy Plot' }}
+          layout={{ width: 1200, height: 1000, title: 'График продаж' }}
         />
       </div>
     )

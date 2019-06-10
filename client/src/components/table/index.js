@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import get from 'getColumns';
 import style from './style.module.css';
 
 class Dictionary extends Component {
@@ -18,6 +17,13 @@ class Dictionary extends Component {
     items: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number,
     })),
+    saveItems: PropTypes.func,
+    editable: PropTypes.bool.isRequired,
+  }
+
+  static defaultProps = {
+    saveItems: () => null,
+    editable: true,
   }
 
   componentDidMount() {
@@ -51,10 +57,24 @@ class Dictionary extends Component {
     }, {})
   }
 
+  getAvaliableId = () => {
+    const ids = this.state.items.map(items => items.id).sort();
+
+    return ids[ids.length - 1] + 1;
+  }
+
+  saveItems = () => {
+    const { saveItems } = this.props;
+    saveItems(this.state.items);
+  }
+
+
   addRow = () => {
     const items = [...this.state.items];
 
     const row = this.getRowFromSchema(this.state.schema);
+    row.id = this.getAvaliableId();
+
     items.push(row);
 
     this.setState({ items });
@@ -62,6 +82,19 @@ class Dictionary extends Component {
 
   getColumns = row => {
     return Object.keys(row);
+  }
+
+  onCellChange = (e) => {
+    const { value, name, id } = e.target;
+
+    const items = [...this.state.items];
+
+    const idx = items.findIndex(item => parseInt(item.id) === parseInt(id));
+    if (idx < 0) return;
+
+    items[idx][name] = value;
+
+    this.setState({ items });
   }
 
   noItems(mess) {
@@ -93,30 +126,39 @@ class Dictionary extends Component {
           <tbody>
             {items.map((row) => {
               return (
-                <tr key={`${row.id}${Math.random()}`}>
+                <tr key={`${row.id}`}>
                   {schema.map(column => (
                     <td
-                      key={column.name}
-                      name={column.name}
-                      row={row.id}
-                      onChange={this.onCellChange}
+                      key={`${row.id}${column.name}`}
                     >
-                      <input
+                      {this.props.editable ? <input
                         name={column.name}
-                        row={row.id}
+                        id={row.id}
                         onChange={this.onCellChange}
                         className={style.input}
-                        defaultValue={row[column.name]}
-                      />
+                        value={row[column.name]}
+                      /> : <input
+                          id={row.id}
+                          className={style.input}
+                          defaultValue={row[column.name]}
+                          disabled
+                        />}
                     </td>))
                   }
                 </tr>)
             })}
           </tbody>
         </table>
-        <div onClick={this.addRow}>
-          Add
-        </div>
+        {this.props.editable &&
+          <div>
+            <button className={style.addButton} onClick={this.addRow}>
+              Добавить
+          </button>
+            <button className={style.saveButton} onClick={this.saveItems}>
+              Сохранить
+          </button>
+          </div>
+        }
       </div>
     )
   }
