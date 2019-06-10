@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import { history } from '../../store';
+import { connect } from 'react-redux';
+import { getUser } from '../../blocks/login/actions';
 
 import { loginPage } from '../../consts/routes';
 
@@ -16,14 +18,30 @@ class PrivateRoute extends Component {
     router: PropTypes.object.isRequired
   };
 
+  state = {
+    canShow: false,
+  }
 
   componentDidMount() {
     const user = window.localStorage.getItem('user');
 
-    if(!user) {
+    if (!user) {
       history.push(loginPage);
 
       return;
+    }
+
+    if (this.props.user) {
+      this.setState({ canShow: true })
+    }
+    else {
+      this.props.getUser(user);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.user !== this.props.user) {
+      this.setState({canShow: true})
     }
   }
 
@@ -32,17 +50,18 @@ class PrivateRoute extends Component {
     // Если нет пользователся -> форма аторизации
     // Если есть пользователь, но нет прав -> форма аторизации
 
-    return (
-      <Route component={component}/>)
+    if (this.state.canShow) return (
+      <Route component={component} />)
+
+    return null;
   }
 }
 
-export default PrivateRoute
 
-// const mapStateToProps = (state) => {
-//   return {
-//     currentUser: state.session.currentUser,
-//   }
-// }
+const mapStateToProps = (state) => {
+  return {
+    user: state.auth.user,
+  }
+}
 
-// export default connect(mapStateToProps, userActions)(PrivateRoute);
+export default connect(mapStateToProps, {getUser})(PrivateRoute);

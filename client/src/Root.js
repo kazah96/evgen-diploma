@@ -17,8 +17,8 @@ class Root extends Component {
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <Switch>
-            {/* <PrivateRoute path={mainPage} component={Main} /> */}
-            <Route path={mainPage} component={Main} />
+            <PrivateRoute path={mainPage} component={Main} />
+            {/* <Route path={mainPage} component={Main} /> */}
             <Route path={loginPage} component={LoginPage} />
             <Route
               exact={true} path={'/'} render={() => ( //eslint-disable-line react/jsx-no-bind

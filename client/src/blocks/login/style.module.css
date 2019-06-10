@@ -1,0 +1,52 @@
+.loginForm {
+  background: aliceblue;
+
+  width: 350px;
+
+  margin: auto;
+
+  margin-top: auto;
+
+  margin-top: 286.3px;
+
+  height: 200px;
+  border-radius: 17px;
+  padding: 20px;
+  text-align: center;
+}
+
+.label {
+  display: block;
+  font-size: 18px;
+}
+
+.input {
+  width: 93%;
+  font-size: 20px;
+}
+
+.par {
+  margin-bottom: 10px;
+}
+
+.button {
+  background: orange;
+  cursor: pointer;
+  font-size: 22px;
+
+  color: black;
+
+  padding: 9px 31px 9px 31px;
+
+  border-radius: 16px;
+
+  border: 0;
+
+  text-align: center;
+}
+
+.error {
+  margin-bottom: 8px;
+
+  color: red;
+}

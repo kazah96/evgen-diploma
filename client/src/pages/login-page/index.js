@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import Login from '../../blocks/login'
+
 export default class LoginPage extends Component {
   componentDidMount() {
     document.title = 'Логин'
@@ -7,22 +9,7 @@ export default class LoginPage extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-
-
-          <label>
-            Имя
-        </label>
-          <input>
-          </input>
-        </div>
-
-
-        <input>
-        </input>
-
-      </div>
+      <Login></Login>
     )
   }
 }

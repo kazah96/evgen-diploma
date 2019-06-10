@@ -22,7 +22,31 @@
   color: #1b1a1a;
 }
 
+.exit {
+  color: #ffa600;
+  cursor: pointer;
+}
+
 .activeLink {
   color: #1b1a1a;
   border-bottom: 3px solid #ffcd4c;
+}
+
+.profile {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 20px;
+}
+.name {
+  color: #67616c;
+  margin-right: 15px;
+}
+
+.ava {
+  background: #969696;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
 }
